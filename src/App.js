@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import logo from '../src/assets/logo.svg';
+import '../src/css/App.css';
 
-function App() {
+export default function App({ props }) {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div style={styles.container}>
+      <div style={styles.header}>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div style={{ fontSize: 36, fontWeight: 'bold' }}>
+          React Search Box Component
+        </div>
+      </div>
     </div>
   );
 }
 
-export default App;
+const styles = {
+  container: {
+    width: '100vw',
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: 'pink',
+  },
+  header: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+};
