@@ -14,7 +14,7 @@ export default function PageOne({}) {
         <SearchBar placeholder="Search Bar" data={Data} />
       </div>
       <GooglePlacesAutocomplete
-        apiKey="AIzaSyAhbjitpt0tYto-g0gj7LrUSuwxJz0-pXw"
+        apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
         autocompletionRequest={{
           componentRestrictions: {
             country: ['uk'],
