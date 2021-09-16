@@ -1,11 +1,15 @@
 import React from 'react';
+import { MUTATION_LOG_IN } from '../apollo/queries/users';
 
+import { logIn } from '../actions/loginActions';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 
-export default function SearchInputBarOne({ placeholder, data }) {
+export default function SearchInputBarOne({ placeholder, DummyData }) {
   const [filteredData, setFilteredData] = React.useState([]);
   const [searchPhrase, setSearchPhrase] = React.useState('');
+  const [logInResponse, setLogInResponse] = React.useState(null);
+  console.log(logInResponse);
 
   const SEARCH_BOX_WIDTH = 330;
   const BORDER_RADIUS = 24;
@@ -33,6 +37,7 @@ export default function SearchInputBarOne({ placeholder, data }) {
       URL + '?address=' + location.replace(/ /g, '+') + 'CA&key=' + API_KEY;
 
     try {
+      // // get Geocode API response
       // const response = await fetch(REQUEST_URL);
       // const data = await response.json();
       // const address = data.results[0].address_components;
@@ -40,8 +45,8 @@ export default function SearchInputBarOne({ placeholder, data }) {
       // console.log('address: ', address); //debug
       // setFilteredData(data);
 
-      const newFilter = data.filter((value) => {
-        return value.title.toLowerCase().includes(searchPhrase.toLowerCase());
+      const newFilter = DummyData.filter((post) => {
+        return post.title.toLowerCase().includes(searchPhrase.toLowerCase());
       });
       if (searchPhrase === '') {
         setFilteredData([]);
@@ -56,9 +61,12 @@ export default function SearchInputBarOne({ placeholder, data }) {
   React.useEffect(() => {
     setTimeout(() => {
       fetchData();
-      console.log(filteredData);
     }, 1500);
   }, [searchPhrase]);
+
+  React.useEffect(() => {
+    logIn({ setLogInResponse });
+  }, []);
 
   // SERVERS ---------------------------------------------------------
   const FeedElement = ({ post }) => {

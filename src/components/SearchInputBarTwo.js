@@ -46,6 +46,7 @@ async function handlePlaceSelect(updateQuery) {
 export default function SearchInputBarTwo({ props }) {
   const [query, setQuery] = React.useState(null);
   const autoCompleteRef = React.useRef(null);
+  const { REACT_APP_GOOGLE_API_KEY } = process.env;
 
   const SEARCH_BOX_WIDTH = 330;
   const BORDER_RADIUS = 24;
@@ -61,7 +62,7 @@ export default function SearchInputBarTwo({ props }) {
 
   React.useEffect(() => {
     loadScript(
-      `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`,
+      `https://maps.googleapis.com/maps/api/js?key=${REACT_APP_GOOGLE_API_KEY}&libraries=places`,
       () => handleScriptLoad(setQuery, autoCompleteRef)
     );
   }, []);

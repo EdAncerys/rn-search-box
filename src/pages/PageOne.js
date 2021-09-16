@@ -6,13 +6,14 @@ import Data from '../../src/components/Data.json';
 export default function PageOne({}) {
   const [value, setValue] = React.useState(null);
   console.log('Selected search value: ', value); //debug
+  const { REACT_APP_GOOGLE_API_KEY } = process.env;
 
   return (
     <div style={styles.container}>
       <div className="title-one">@react-google-places-autocomplete library</div>
 
       <GooglePlacesAutocomplete
-        apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+        apiKey={REACT_APP_GOOGLE_API_KEY}
         autocompletionRequest={{
           componentRestrictions: {
             country: ['uk'],
