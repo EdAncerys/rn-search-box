@@ -9,6 +9,8 @@ export default function SearchInputBarOne({ placeholder, DummyData }) {
   const [searchPhrase, setSearchPhrase] = React.useState('');
   const [posts, setPosts] = React.useState(null);
 
+  const { REACT_APP_GOOGLE_API_KEY } = process.env;
+
   const SEARCH_BOX_WIDTH = 330;
   const BORDER_RADIUS = 24;
   const INPUT_PADDING = '0px 24px';
@@ -29,7 +31,7 @@ export default function SearchInputBarOne({ placeholder, DummyData }) {
   const fetchData = async () => {
     // const location = searchPhrase;
     // const URL = 'https://maps.googleapis.com/maps/api/geocode/json';
-    // const API_KEY = 'AIzaSyBqK6x1Nj8GpbVCHEy1aicJAYN8Hf61iOE';
+    // const API_KEY = REACT_APP_GOOGLE_API_KEY;
     // const REQUEST_URL =
     //   URL + '?address=' + location.replace(/ /g, '+') + 'CA&key=' + API_KEY;
 
