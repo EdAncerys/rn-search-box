@@ -1,8 +1,6 @@
 import React from 'react';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
-import Data from '../../src/components/Data.json';
-
 export default function PageOne({}) {
   const [value, setValue] = React.useState(null);
   console.log('Selected search value: ', value); //debug

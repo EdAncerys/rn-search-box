@@ -1,19 +1,16 @@
 import React from 'react';
-import { MUTATION_LOG_IN } from '../apollo/queries/users';
 
-import { logIn } from '../actions/loginActions';
+import { getPosts } from '../actions/postActions';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 
 export default function SearchInputBarOne({ placeholder, DummyData }) {
   const [filteredData, setFilteredData] = React.useState([]);
   const [searchPhrase, setSearchPhrase] = React.useState('');
-  const [logInResponse, setLogInResponse] = React.useState(null);
-  console.log(logInResponse);
+  const [posts, setPosts] = React.useState(null);
 
   const SEARCH_BOX_WIDTH = 330;
   const BORDER_RADIUS = 24;
-  const INPUT_CONTAINER_HEIGHT = 40;
   const INPUT_PADDING = '0px 24px';
   const bgPrimary = '#fff';
   const bgSecondary = '#f2f2f2';
@@ -30,11 +27,11 @@ export default function SearchInputBarOne({ placeholder, DummyData }) {
   };
 
   const fetchData = async () => {
-    const location = searchPhrase;
-    const URL = 'https://maps.googleapis.com/maps/api/geocode/json';
-    const API_KEY = 'AIzaSyBqK6x1Nj8GpbVCHEy1aicJAYN8Hf61iOE';
-    const REQUEST_URL =
-      URL + '?address=' + location.replace(/ /g, '+') + 'CA&key=' + API_KEY;
+    // const location = searchPhrase;
+    // const URL = 'https://maps.googleapis.com/maps/api/geocode/json';
+    // const API_KEY = 'AIzaSyBqK6x1Nj8GpbVCHEy1aicJAYN8Hf61iOE';
+    // const REQUEST_URL =
+    //   URL + '?address=' + location.replace(/ /g, '+') + 'CA&key=' + API_KEY;
 
     try {
       // // get Geocode API response
@@ -65,7 +62,7 @@ export default function SearchInputBarOne({ placeholder, DummyData }) {
   }, [searchPhrase]);
 
   React.useEffect(() => {
-    logIn({ setLogInResponse });
+    getPosts({ setPosts });
   }, []);
 
   // SERVERS ---------------------------------------------------------
