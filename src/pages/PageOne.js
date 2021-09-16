@@ -2,17 +2,15 @@ import React from 'react';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 import Data from '../../src/components/Data.json';
-import SearchBar from '../components/SearchBar';
 
 export default function PageOne({}) {
   const [value, setValue] = React.useState(null);
-  console.log(value);
+  console.log('Selected search value: ', value); //debug
 
   return (
     <div style={styles.container}>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <SearchBar placeholder="Search Bar" data={Data} />
-      </div>
+      <div className="title-one">@react-google-places-autocomplete library</div>
+
       <GooglePlacesAutocomplete
         apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
         autocompletionRequest={{
@@ -30,5 +28,7 @@ export default function PageOne({}) {
 }
 
 const styles = {
-  container: {},
+  container: {
+    minWidth: 330,
+  },
 };

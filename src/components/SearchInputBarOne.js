@@ -3,7 +3,7 @@ import React from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 
-export default function SearchBar({ placeholder, data }) {
+export default function SearchInputBarOne({ placeholder, data }) {
   const [filteredData, setFilteredData] = React.useState([]);
   const [searchPhrase, setSearchPhrase] = React.useState('');
 
@@ -91,7 +91,6 @@ export default function SearchBar({ placeholder, data }) {
           width: SEARCH_BOX_WIDTH,
           borderBottomLeftRadius: BORDER_RADIUS,
           borderBottomRightRadius: BORDER_RADIUS,
-          // marginTop: INPUT_CONTAINER_HEIGHT / 4,
           backgroundColor: bgPrimary,
           overflow: 'hidden',
         }}
@@ -116,9 +115,28 @@ export default function SearchBar({ placeholder, data }) {
     );
   };
 
+  const ServeActions = () => {
+    return (
+      <div style={styles.iconContainer}>
+        <div
+          style={{
+            display: 'flex',
+            padding: 5,
+            borderRadius: '50%',
+            backgroundColor: bgSecondary,
+          }}
+        >
+          {!searchPhrase && <SearchIcon />}
+          {searchPhrase && <CloseIcon onClick={handleClearInput} />}
+        </div>
+      </div>
+    );
+  };
+
   // RETURN ---------------------------------------------------------
   return (
     <div>
+      <div className="title-one">Stand alone component</div>
       <div
         style={{
           display: 'flex',
@@ -139,19 +157,7 @@ export default function SearchBar({ placeholder, data }) {
           onChange={handleFilter}
           style={styles.input}
         />
-        <div style={styles.iconContainer}>
-          <div
-            style={{
-              display: 'flex',
-              padding: 5,
-              borderRadius: '50%',
-              backgroundColor: bgSecondary,
-            }}
-          >
-            {!searchPhrase.length && <SearchIcon />}
-            {!!searchPhrase.length && <CloseIcon onClick={handleClearInput} />}
-          </div>
-        </div>
+        <ServeActions />
       </div>
       {!!filteredData.length && <ServeFilterSelectionContainer />}
     </div>
