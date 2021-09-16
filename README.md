@@ -1,14 +1,21 @@
-# Search Box. Google Places API & Strapi with Apollo client
+# Search Box Component.
+
+## Implemented with Google Places API & Strapi together with Apollo client.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### How to run it:
 
-`* .env need to be added with appropriate variables`
+`* .env in root dirt need to be added with following variables`
 
 `REACT_APP_GOOGLE_API_KEY`
+`REACT_APP_GRAPHQL_URI`
+`REACT_APP_LOGIN_USERNAME`
+`REACT_APP_LOGIN_PASSWORD`
 
-- To clone repository:
+- Clone repository:
+
+  `git clone https://github.com/EdAncerys/rn-search-box`
 
 - Navigate to the app:
 
